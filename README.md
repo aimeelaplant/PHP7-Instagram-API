@@ -3,6 +3,9 @@
 This is an Instagram API for PHP 7. During the time this was being made, Instagram closed off their API, so, unfortunately, I have no plans of continuing this repo. But feel free to look around.
 
 To install dependencies, run `composer install` (the only dependency is PHPUnit for testing).
+
+Currently, the UserService is the only finished service class.
+
 ## Example
 
 ```
