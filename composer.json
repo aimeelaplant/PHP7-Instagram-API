@@ -1,0 +1,22 @@
+{
+  "name": "aimeelaplant/php7-instagram-api",
+  "authors": [
+    {
+      "name": "Aimee LaPlant",
+      "email": "aimee@aimeelaplant.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "laplant\\Instagram\\": "src/Instagram",
+      "laplant\\Instagram\\Tests\\": "tests/Instagram"
+    }
+  }
+}
