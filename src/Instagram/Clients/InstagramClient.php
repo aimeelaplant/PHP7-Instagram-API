@@ -162,7 +162,6 @@ class InstagramClient
     public function sendRequestWithToken(string $endpoint, array $params = [], $requestType = RequestTypes::GET) : CurlInfo
     {
         $url = UrlUtils::buildEndpoint($endpoint, $params);
-        $httpClient = HttpClient::getInstance();
         $httpParams = array_merge([
             'client_id'     => $this->getClientId(),
             'access_token'  => $this->getAccessToken()
@@ -170,13 +169,13 @@ class InstagramClient
         
         switch ($requestType) {
             case RequestTypes::GET:
-                $response = $httpClient->get($url, $httpParams);
+                $response = HttpClient::get($url, $httpParams);
                 break;
             case RequestTypes::POST:
-                $response = $httpClient->post($url, $httpParams);
+                $response = HttpClient::post($url, $httpParams);
                 break;
             case RequestTypes::DELETE:
-                $response = $httpClient->delete($url, $httpParams);
+                $response = HttpClient::delete($url, $httpParams);
                 break;
         }
 
