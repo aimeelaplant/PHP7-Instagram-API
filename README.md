@@ -11,9 +11,11 @@ Currently, the UserService is the only finished service class.
 ```
 require_once 'vendor/autoload.php';
 
-use laplant\Instagram\Clients\InstagramClient;
-use laplant\Instagram\Services\UserService;
-use laplant\Instagram\Config;
+use laplant\Instagram\{
+  Clients\InstagramClient,
+  Services\UserService;
+  Config
+};
 
 // initiate client
 $client = new InstagramClient();
