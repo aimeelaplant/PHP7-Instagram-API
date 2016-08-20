@@ -14,21 +14,6 @@ use laplant\Instagram\{
  */
 class HttpClient implements RequestMethodsInterface
 {
-
-    private static $instance;
-    private $handle;
-
-    /**
-     * @return HttpClient
-     */
-    public static function getInstance() : self
-    {
-        if (is_null(self::$instance)) {
-            self::$instance = new static();
-        }
-        return self::$instance;
-    }
-
     /**
      * @return array
      */
@@ -42,19 +27,6 @@ class HttpClient implements RequestMethodsInterface
     }
 
     /**
-     * @return resource
-     */
-    public function getHandle()
-    {
-        if (is_null($this->handle)) {
-            $this->handle = curl_init();
-            return $this->handle;
-        } else {
-            return $this->handle;
-        }
-    }
-
-    /**
      * @param string $url
      * @param array|null $params
      *
@@ -63,12 +35,13 @@ class HttpClient implements RequestMethodsInterface
      */
     public function get(string $url, array $params = null) : CurlInfo
     {
-        $handle = $this->getHandle();
+        $handle = curl_init();
         $opts = self::getDefaultOptions();
         $opts[\CURLOPT_URL] = $url;
         curl_setopt_array($handle, $opts);
         $result = curl_exec($handle);
         $info = curl_getinfo($handle);
+        curl_close($handle);
         if ($result !== false) {
             $httpResponse = CurlInfoFactory::createWithData($info, $result);
             return $httpResponse;
@@ -90,13 +63,14 @@ class HttpClient implements RequestMethodsInterface
      */
     public function post(string $url, array $params = null) : CurlInfo
     {
-        $handle = $this->getHandle();
+        $handle = curl_init();
         $opts = self::getDefaultOptions();
         $opts[\CURLOPT_URL] = $url;
         $opts[\CURLOPT_CUSTOMREQUEST] = "POST";
         curl_setopt_array($handle, $opts);
         $result = curl_exec($handle);
         $info = curl_getinfo($handle);
+        curl_close($handle);
         if ($result !== false) {
             $httpResponse = CurlInfoFactory::createWithData($info, $result);
             return $httpResponse;
@@ -119,13 +93,14 @@ class HttpClient implements RequestMethodsInterface
      */
     public function delete(string $url, array $params = null) : CurlInfo
     {
-        $handle = $this->getHandle();
+        $handle = curl_init();
         $opts = self::getDefaultOptions();
         $opts[\CURLOPT_URL] = $url;
         $opts[\CURLOPT_CUSTOMREQUEST] = "DELETE";
         curl_setopt_array($handle, $opts);
         $result = curl_exec($handle);
         $info = curl_getinfo($handle);
+        curl_close($handle);
         if ($result !== false) {
             $httpResponse = CurlInfoFactory::createWithData($info, $result);
             return $httpResponse;
@@ -138,14 +113,4 @@ class HttpClient implements RequestMethodsInterface
         }
     }
 
-
-    /**
-     *
-     */
-    public function __destruct()
-    {
-        if (is_resource($this->getHandle())) {
-            curl_close($this->getHandle());
-        }
-    }
 }
