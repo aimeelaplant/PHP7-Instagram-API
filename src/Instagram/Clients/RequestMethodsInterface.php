@@ -18,7 +18,7 @@ interface RequestMethodsInterface
      *
      * @return mixed
      */
-    public function get(string $endpoint, array $params = null);
+    public static function get(string $endpoint, array $params = null);
 
     /**
      * @param string $endpoint
@@ -26,7 +26,7 @@ interface RequestMethodsInterface
      *
      * @return mixed
      */
-    public function post(string $endpoint, array $params);
+    public static function post(string $endpoint, array $params);
 
     /**
      * @param string $endpoint
@@ -34,5 +34,5 @@ interface RequestMethodsInterface
      *
      * @return mixed
      */
-    public function delete(string $endpoint, array $params);
+    public static function delete(string $endpoint, array $params);
 }

@@ -33,7 +33,7 @@ class HttpClient implements RequestMethodsInterface
      * @return CurlInfo
      * @throws CurlException
      */
-    public function get(string $url, array $params = null) : CurlInfo
+    public static function get(string $url, array $params = null) : CurlInfo
     {
         $handle = curl_init();
         $opts = self::getDefaultOptions();
@@ -61,7 +61,7 @@ class HttpClient implements RequestMethodsInterface
      * @return CurlInfo
      * @throws CurlException
      */
-    public function post(string $url, array $params = null) : CurlInfo
+    public static function post(string $url, array $params = null) : CurlInfo
     {
         $handle = curl_init();
         $opts = self::getDefaultOptions();
@@ -91,7 +91,7 @@ class HttpClient implements RequestMethodsInterface
      * @return CurlInfo
      * @throws CurlException
      */
-    public function delete(string $url, array $params = null) : CurlInfo
+    public static function delete(string $url, array $params = null) : CurlInfo
     {
         $handle = curl_init();
         $opts = self::getDefaultOptions();
