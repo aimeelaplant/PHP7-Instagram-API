@@ -88,7 +88,7 @@ class UserService extends BaseService
         if ($this->client->getMeta()->getErrorMessage()) {
             throw new InstagramAPIException($this->client->getMeta());
         }
-        foreach ($resultArray['data'] as $data) {
+        foreach ($resultArray as $data) {
             $media = MediaFactory::createFromData($data);
             $mediaCollection->addItem($media);
         }
@@ -125,7 +125,7 @@ class UserService extends BaseService
         if ($this->client->getMeta()->getErrorMessage()) {
             throw new InstagramAPIException($this->client->getMeta());
         }
-        foreach ($resultArray['data'] as $data) {
+        foreach ($resultArray as $data) {
             $media = MediaFactory::createFromData($data);
             $mediaCollection->addItem($media);
         }

@@ -1,9 +1,6 @@
 <?php declare(strict_types=1);
 
 namespace laplant\Instagram\Factories;
-
-use laplant\Instagram\Models\BaseModel;
-
 use laplant\Instagram\Models\User;
 
 class UserFactory
@@ -13,7 +10,7 @@ class UserFactory
     {
         return new User();
     }
-    
+
     public static function createFromData($data) : User
     {
         $user = self::create();
