@@ -83,7 +83,6 @@ class UserService extends BaseService
             $params['max_id'] = $maxId;
         }
         $response = $this->client->sendRequestWithToken($endpoint, $params);
-        print_r($response);
         $mediaCollection = new MediaCollection();
         $resultArray = $this->client->handleResponse($response);
         if ($this->client->getMeta()->getErrorMessage()) {
