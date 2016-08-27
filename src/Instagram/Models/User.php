@@ -2,8 +2,6 @@
 
 namespace laplant\Instagram\Models;
 
-use laplant\Instagram\Models\BaseModel;
-
 class User
 {
     private $id;
